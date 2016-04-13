@@ -25,6 +25,14 @@ class GridSearchTests(TestCase):
                                "12212"])
         self.assertEqual(True, match)
 
+    def test_grid_search_should_return_true_when_G_contains_P_and_there_is_duplicated_offset_data(self):
+        match = grid.search(G=["88002851",
+                               "89491022",
+                               "85591855"],
+                            P=["022",
+                               "855"])
+        self.assertEqual(True, match)
+
     def test_grid_search_should_return_false_when_G_does_not_contain_P(self):
         match = grid.search(G=["12345678952679",
                                "68231245232341",
