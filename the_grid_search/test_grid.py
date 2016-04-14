@@ -25,12 +25,37 @@ class GridSearchTests(TestCase):
                                "12212"])
         self.assertEqual(True, match)
 
-    def test_grid_search_should_return_true_when_G_contains_P_and_there_is_duplicated_offset_data(self):
-        match = grid.search(G=["88002851",
-                               "89491022",
-                               "85591855"],
+    def test_grid_search_should_return_true_when_G_contains_P_with_duplicated_offset_data(self):
+        match = grid.search(G=["894022022",
+                               "855918855"],
                             P=["022",
                                "855"])
+        self.assertEqual(True, match)
+
+    def test_grid_search_should_return_true_when_G_contains_P_with_duplicated_offset_data_2(self):
+        match = grid.search(G=["373373333",
+                               "567555567",
+                               "111288893"],
+                            P=["333",
+                               "567"])
+        self.assertEqual(True, match)
+
+    def test_grid_search_should_return_true_when_G_contains_P_with_duplicated_offset_data_3(self):
+        match = grid.search(G=["999999",
+                               "121211"],
+                            P=["99",
+                               "11"])
+        self.assertEqual(True, match)
+
+    def test_grid_search_should_return_true_when_G_contains_P_with_duplicated_offset_data_4(self):
+        match = grid.search(G=["111111111111111",
+                               "111111111111111",
+                               "111111011111111",
+                               "111111111111111",
+                               "111111111111111"],
+                            P=["11111",
+                               "11111",
+                               "11110"])
         self.assertEqual(True, match)
 
     def test_grid_search_should_return_false_when_G_does_not_contain_P(self):
@@ -55,9 +80,7 @@ class GridSearchTests(TestCase):
         self.assertEqual(False, match)
 
     def test_grid_search_should_return_false_when_G_contains_P_but_is_not_contiguous(self):
-        match = grid.search(G=["7802245812",
-                               "9982257530",
-                               "0091758994",
+        match = grid.search(G=["0091758994",
                                "1164889635"],
                             P=["175",
                                "116"])

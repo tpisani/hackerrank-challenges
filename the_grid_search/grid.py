@@ -2,30 +2,39 @@
 
 # https://www.hackerrank.com/challenges/the-grid-search
 
+
 def search(G, P):
     R = len(G)
     r = len(P)
 
     i = 0
     j = 0
-    k = 0
+    l = 0
+    m = -1
 
     while i < R and j < r:
         try:
-            k = G[i+j].find(P[j])
+            k = G[i+j][l:].find(P[j])
         except IndexError:
             break
 
+        if m == -1:
+            m = k
+
         if k != -1:
-            j += 1
+            if k == m:
+                j += 1
+            else:
+                j = 0
+                l += 1
+                m = -1
         else:
             i += 1
             j = 0
-            k = 0
+            l = 0
+            m = -1
 
-    if j == r:
-        return True
-    return False
+    return j == r
 
 
 if __name__ == "__main__":
